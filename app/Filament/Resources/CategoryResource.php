@@ -28,15 +28,32 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                //card
+                Forms\Components\Card::make()
+                    ->schema([
+
+                        //image
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Category Image')
+                            ->placeholder('Category Image')
+                            ->required(),
+
+                        //name
+                        Forms\Components\TextInput::make('name')
+                            ->label('Category Name')
+                            ->placeholder('Category Name')
+                            ->required(),
+
+                    ])
             ]);
     }
-
+    
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\ImageColumn::make('image')->circular(),
+                Tables\Columns\TextColumn::make('name')->searchable(),
             ])
             ->filters([
                 //
@@ -46,9 +63,9 @@ class CategoryResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                Tables\Actions\DeleteBulkAction::make(),
+            ]),
+        ]);
     }
 
     public static function getRelations(): array
