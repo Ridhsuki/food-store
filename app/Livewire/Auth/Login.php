@@ -9,17 +9,26 @@ class Login extends Component
     public $email;
     public $password;
         
-    /**
-     * rules
-     *
-     * @return void
-     */
+
     protected function rules()
     {
         return [
             'email' => ['required', 'email'],
             'password' => ['required'],
         ];
+    }
+
+    /**
+     * mount
+     *
+     * @return void
+     */
+    public function mount()
+    {
+        // redirect if user is already logged in
+        if(auth()->guard('customer')->check()) {
+            return $this->redirect('/account/my-orders', navigate: true);
+        }
     }
 
     /**

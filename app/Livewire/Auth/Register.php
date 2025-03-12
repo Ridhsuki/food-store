@@ -22,6 +22,19 @@ class Register extends Component
     }
 
     /**
+     * mount
+     *
+     * @return void
+     */
+    public function mount()
+    {
+        // redirect if user is already logged in
+        if(auth()->guard('customer')->check()) {
+            return $this->redirect('/account/my-orders', navigate: true);
+        }
+    }
+    
+    /**
      * register
      *
      * @return void
@@ -33,9 +46,9 @@ class Register extends Component
 
         //create customer
         Customer::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
+            'name'      => $this->name,
+            'email'     => $this->email,
+            'password'  => bcrypt($this->password),
         ]);
 
         //session flash
