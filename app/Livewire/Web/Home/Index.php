@@ -14,7 +14,18 @@ class Index extends Component
         return Product::with('category', 'ratings.customer')
             ->withAvg('ratings', 'rating') // Menghitung rata-rata rating
             ->having('ratings_avg_rating', '>=', 4)
+            ->limit(5) // Batas jumlah produk
+            ->get();
+    }
+    
+    protected function getLatestProducts()
+    {
+        //get products
+        return Product::query()
+            ->with('category', 'ratings.customer')
+            ->withAvg('ratings', 'rating')
             ->limit(5)
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 
@@ -30,6 +41,9 @@ class Index extends Component
 
             //get popular products
             'popularProducts' => $this->getPopularProducts(),
+
+            //get latest products
+            'latestProducts' => $this->getLatestProducts(),
             
         ]);
     }
