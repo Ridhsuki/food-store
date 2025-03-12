@@ -4,6 +4,7 @@ namespace App\Livewire\Web\Home;
 
 use App\Models\Slider;
 use Livewire\Component;
+use App\Models\Category;
 
 class Index extends Component
 {
@@ -13,6 +14,9 @@ class Index extends Component
 
             //get sliders
             'sliders' => Slider::latest()->get(),
+
+            //get categories
+            'categories' => Category::latest()->get(),
             
         ]);
     }
