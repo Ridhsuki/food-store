@@ -22,6 +22,9 @@ Route::middleware('auth:customer')->group(function () {
         //route my profile
         Route::get('/my-profile', Account\MyProfile\Index::class)->name('account.my-profile');
 
+        //route password
+        Route::get('/password', Account\Password\Index::class)->name('account.password');
+
     });
 
 });
