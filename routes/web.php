@@ -19,6 +19,9 @@ Route::middleware('auth:customer')->group(function () {
         //route my order show
         Route::get('/my-orders/{snap_token}', Account\MyOrders\Show::class)->name('account.my-orders.show');
 
+        //route my profile
+        Route::get('/my-profile', Account\MyProfile\Index::class)->name('account.my-profile');
+
     });
 
 });
