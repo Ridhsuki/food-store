@@ -32,3 +32,5 @@ Route::middleware('auth:customer')->group(function () {
 Route::get('/', Web\Home\Index::class)->name('home');
 //route products index
 Route::get('/products', Web\Products\Index::class)->name('web.product.index');
+//route category show
+Route::get('/category/{slug}', Web\Category\Show::class)->name('web.category.show');
