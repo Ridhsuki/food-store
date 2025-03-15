@@ -36,3 +36,5 @@ Route::get('/products', Web\Products\Index::class)->name('web.product.index');
 Route::get('/category/{slug}', Web\Category\Show::class)->name('web.category.show');
 //route product show
 Route::get('/products/{slug}', Web\Products\Show::class)->name('web.product.show');
+//route cart
+Route::get('/cart', Web\Cart\Index::class)->name('web.cart.index')->middleware('auth:customer');
