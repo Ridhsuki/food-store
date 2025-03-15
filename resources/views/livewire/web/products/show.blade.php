@@ -91,6 +91,7 @@ Food Store, Eat Your Favorite Foods
             </div>
 
             <!-- button add to cart -->
+            <livewire:web.cart.btn-add-to-cart-full :product_id="$product->id" />
 
         </div>
     </div>
