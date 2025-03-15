@@ -34,3 +34,5 @@ Route::get('/', Web\Home\Index::class)->name('home');
 Route::get('/products', Web\Products\Index::class)->name('web.product.index');
 //route category show
 Route::get('/category/{slug}', Web\Category\Show::class)->name('web.category.show');
+//route product show
+Route::get('/products/{slug}', Web\Products\Show::class)->name('web.product.show');
